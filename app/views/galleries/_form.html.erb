@@ -28,7 +28,7 @@
 
 				<span class="keyword">
 					<%= check_box_tag "keywords[]", keyword.id,  @gallery.gallery_keywords.include?(keyword) %>
-					<%= link_to keyword.keyword, edit_admin_gallery_keyword_path(@gallery, keyword) %>
+					<%= link_to keyword.keyword, edit_admin_gallery_keyword_path((@gallery.new_record? ? Gallery.first : @gallery), keyword) %>
 					<%= ' | ' unless @keywords.last == keyword %> 
 				</span>
 
