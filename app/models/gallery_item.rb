@@ -132,7 +132,7 @@ class GalleryItem < ActiveRecord::Base
    def create_item_infos
 	if self.jpeg? then
     if Radiant::Config["gallery.storage"].eql?("s3")
-      Kernel.open(self.full_filename) do |file|
+      Kernel.open(self.s3_url) do |file|
         picture = EXIFR::JPEG.new(file)
       end
     else
